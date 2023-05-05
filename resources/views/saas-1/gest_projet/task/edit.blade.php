@@ -3,7 +3,7 @@
 <div class="row">
   <div class="card">
     <div class="card-header">
-        <h5>Modification d'un projet
+        <h5>Modification d'une tache
     <a href="{{route('client.index')}}" style="text-align:right; float:right;" 
 					  class="btn btn-primary"  title="Lister les produits">
 					 <i data-feather="list"></i> Projet</a> </h5>
@@ -26,29 +26,29 @@
         </div>
     @endforeach
     @endif
-								<form action="{{route('project.update',$project->id)}}" method="post" enctype="multipart/form-data">
+								<form action="{{route('task.update',$task->id)}}" method="post" enctype="multipart/form-data">
               						@csrf
 									@method('put')
-									  <input type="hidden" name="id" value="{{$project->id}}">
+									  <input type="hidden" name="id" value="{{$task->id}}">
 
               						<div class="row">
                 						
                 						<div class="col-md-6">
-                  							<label for="validationCustom01" class="form-label">Nom du projet</label>
+                  							<label for="validationCustom01" class="form-label">Nom de la tache</label>
                   							<input type="text" 
                           							name="nom"  
                           							class="form-control" 
                           							id="validationCustom01" 
-                          							value="{{$project->name}}" readonly required>
+                          							value="{{$task->name}}" readonly required>
                   							
                 						</div>
                 						<div class="col-md-6">
-                  							<label for="validationCustom01" class="form-label">Description du prjet</label>
+                  							<label for="validationCustom01" class="form-label">Description de la tache</label>
                   							<input type="text" 
                           							name="description"  
                           							class="form-control" 
                           							id="validationCustom01" 
-                          							value="{{$project->description}}" required>
+                          							value="{{$task->description}}" required>
                   							
                 						</div>
               						</div>
@@ -59,7 +59,7 @@
                           							name="start_date"  
                           							class="form-control" 
                           							id="validationCustom01" 
-                          							value="{{$project->start_date}}" required>
+                          							value="{{$task->start_date}}" required>
                   							
                 						</div>
                 						<div class="col-md-4">
@@ -68,9 +68,20 @@
                             						name="end_date"  
                             						class="form-control" 
                             						id="validationCustom01" 
-                            						value="{{$project->end_date}}"  required>
+                            						value="{{$task->end_date}}"  required>
                   							
                 						</div>
+										{{-- <div class="col-md-4">
+											<label for="validationCustom01" class="form-label">Charger de taches</label>
+											<select type="text" name="user" class="form-control"
+												id="validationCustom01" placeholder="Saisir la description du projet"
+												required>
+													@foreach($users as $user)                                                     
+													<option value="{{$user->id}}">{{$user->name}} </option>
+													@endforeach
+											</select>
+											<div class="valid-feedback">Looks good!</div>
+										</div> --}}
                 
               						</div>			     
               						<div class="modal-footer">

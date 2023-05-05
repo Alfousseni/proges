@@ -77,11 +77,11 @@
                                                         style="float:left;"hidden><i data-feather="trash"></i></button>
                                             
                                                 </form>
-                                                <a href="" title="Ajouter une tache"
+                                                <a href="{{ route('listetaches' , $project->id)}}" title="Ajouter une tache"
                                                 style="float:left;" class="badge badge-light-primary text-start me-2 ">
                                                 <i data-feather="plus"></i>
-                                            </a>
-                                                </form>
+                                                </a>
+                                               
                                             </td>
                                         </tr>
                                     @endforeach

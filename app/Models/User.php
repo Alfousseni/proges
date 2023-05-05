@@ -36,7 +36,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role', // Ajouter le champ role ici
+        'role', 
 
     ];
 

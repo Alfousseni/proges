@@ -66,7 +66,7 @@
             <li class="menu">
                 <a href="/app/project/" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
-                        <i data-feather="users"></i>
+                        <i data-feather="package"></i>
                         <span>Gestion des projets</span>
                     </div>
                 </a>

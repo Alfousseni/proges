@@ -5,6 +5,8 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\TaskController;
+
 
 
 
@@ -59,12 +61,14 @@ Route::middleware('auth','role:admin')->group(function () {
 	//fin
 
 	//tache
-	Route::resource('/app/project', ProjectController::class)->middleware('auth');
-	Route::get('/app/fiche-projet/{id}',[ProjectController::class, 'voir'])->name('voirprojet');
-	Route::get('/app/voir-list-projet',[ProjectController::class, 'voirliste1'])->name('voirlistep');
-	Route::get('/app/list-projet',[ProjectController::class, 'liste1'])->name('liste-projet');
+	Route::resource('/app/task', TaskController::class)->middleware('auth');
+	Route::get('/app/fiche-tache/{id}',[TaskController::class, 'voir'])->name('voirtache');
+	Route::get('/app/liste-taches/{id}',[TaskController::class, 'index'])->name('listetaches');
+	Route::post('/app/ajout-taches/{id}',[TaskController::class, 'store'])->name('taskadd');
+	Route::get('/app/voir-list-tache',[TaskController::class, 'voirliste1'])->name('voirlistet');
+	Route::get('/app/list-tache',[TaskController::class, 'liste1'])->name('liste-tache');
 	//fin
-	
+
 	
 
 	

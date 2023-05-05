@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('task_id');
             $table->foreign('task_id')->references('id')->on('tasks')->onDelete('cascade');
             $table->unsignedBigInteger('participant_id');
-            $table->foreign('participant_id')->references('id')->on('participants')->onDelete('cascade');
+            $table->foreign('participant_id')->references('id')->on('users')->onDelete('cascade');
             $table->boolean('completed')->default(false);
             $table->timestamps();
         });

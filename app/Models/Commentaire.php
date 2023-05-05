@@ -25,21 +25,18 @@ class Commentaire extends Model
     /**
      * Get the tache that the commentaire belongs to.
      */
-    public function tache()
-    {
-        return $this->belongsTo(Tache::class);
-    }
+ 
 
     /**
      * Get the user that owns the commentaire.
      */
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'user_id');
     }
 
     public function task(){
-        return $this->belongsTo(Task::class);
+        return $this->belongsTo(Task::class,'tache_id');
     }
     
 }
