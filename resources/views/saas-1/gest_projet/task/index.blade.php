@@ -100,7 +100,7 @@
             <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
+                    <div class="modal-content py-5">
                         <div class="modal-header bg-light">
                             <h4 class="modal-title" id="myCenterModalLabel">Formulaire d'ajout d'une tache</h4>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -125,13 +125,7 @@
                                     
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-4">
-                                                <label for="validationCustom01" class="form-label">Description de la tache</label>
-                                                <textarea type="text" name="description" class="form-control"
-                                                    id="validationCustom01" placeholder="Saisir la description du projet"
-                                                    required></textarea>
-                                                <div class="valid-feedback">Looks good!</div>
-                                            </div>
+                                        
                                             <div class="col-md-4">
                                                 <label for="validationCustom01" class="form-label">Charger de taches</label>
                                                 <select type="text" name="user" class="form-control"
@@ -157,8 +151,15 @@
                                                     required>
                                                 <div class="valid-feedback">Looks good!</div>
                                             </div>
-                                        <div class="modal-footer">
-                                            <button class="btn btn-primary">Valider</button>
+                                            <div class="col-md-4 w-100 ">
+                                                <label for="validationCustom01" class="form-label">DESCRIPTION DE LA TACHE</label>
+                                                <input type="text" name="description" 
+                                                    id="demo2" 
+                                                    required>
+                                                <div class="valid-feedback">Looks good!</div>
+                                            </div >
+                                        <div class="">
+                                            <button type="submit" class="btn btn-primary">Valider</button>
                                             <button type="reset" class="btn btn-default">Annuler</button>
                                         </div>
                                     </form>

@@ -56,7 +56,7 @@ Route::middleware('auth','role:admin')->group(function () {
 	//projet
 	Route::resource('/app/project', ProjectController::class)->middleware('auth');
 	Route::get('/app/fiche-projet/{id}',[ProjectController::class, 'voir'])->name('voirprojet');
-	Route::get('/app/voir-list-projet',[ProjectController::class, 'voirliste1'])->name('voirlistep');
+	Route::get('/app/voir-list-projet',[ProjectController::class, 'index'])->name('voirlistep');
 	Route::get('/app/list-projet',[ProjectController::class, 'liste1'])->name('liste-projet');
 	//fin
 

@@ -4,7 +4,7 @@
   <div class="card">
     <div class="card-header">
         <h5>Modification d'une tache
-    <a href="{{route('client.index')}}" style="text-align:right; float:right;" 
+    <a href="{{route('voirlistep')}}" style="text-align:right; float:right;" 
 					  class="btn btn-primary"  title="Lister les produits">
 					 <i data-feather="list"></i> Projet</a> </h5>
     </div>
@@ -39,18 +39,10 @@
                           							name="nom"  
                           							class="form-control" 
                           							id="validationCustom01" 
-                          							value="{{$task->name}}" readonly required>
+                          							value="{{$task->name}}"  required>
                   							
                 						</div>
-                						<div class="col-md-6">
-                  							<label for="validationCustom01" class="form-label">Description de la tache</label>
-                  							<input type="text" 
-                          							name="description"  
-                          							class="form-control" 
-                          							id="validationCustom01" 
-                          							value="{{$task->description}}" required>
-                  							
-                						</div>
+                						
               						</div>
               						<div class="row">
                 						<div class="col-md-4">
@@ -83,7 +75,14 @@
 											<div class="valid-feedback">Looks good!</div>
 										</div> --}}
                 
-              						</div>			     
+              						</div>
+									  <div class="col-md-4 w-100 border">
+										<label for="validationCustom01" class="form-label">DESCRIPTION DE LA TACHE</label>
+										<input type="text" name="description" 
+											id="demo2" 
+											value="{{$task->description}}" required>
+										<div class="valid-feedback">Looks good!</div>
+									</div >			     
               						<div class="modal-footer">
                 						<button class="btn btn-primary">Valider</button>
                 						<button type="reset" class="btn btn-default">Annuler</button>

@@ -19,10 +19,16 @@
     <script src="{{asset('saas/src/plugins/src/table/datatable/custom_miscellaneous.js')}}"></script>
     <!-- END PAGE LEVEL SCRIPTS -->    
     
-     <script src="{{asset('saas/src/plugins/src/editors/quill/quill.js')}}"></script>
+    <script src="{{asset('saas/src/assets/js/scrollspyNav.js')}}"></script>
     <script src="{{asset('saas/src/plugins/src/notification/snackbar/snackbar.min.js')}}"></script>
     <script src="{{asset('saas/src/assets/js/apps/mailbox.js')}}"></script>
-    
+     <!-- BEGIN PAGE LEVEL SCRIPTS -->
+
+     <script src="{{asset('saas/src/plugins/src/editors/markdown/simplemde.min.js')}}"></script>
+     <script src="{{asset('saas/src/plugins/src/editors/markdown/custom-markdown.js')}}"></script>
+     <script src="{{asset('saas/src/plugins/src/editors/quill/quill.js')}}"></script>
+    <script src="{{asset('saas/src/plugins/src/editors/quill/custom-quill.js')}}"></script>
+     <!-- END PAGE LEVEL SCRIPTS -->
     
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
     <script src="{{asset('saas/src/plugins/src/apex/apexcharts.min.js')}}"></script>
@@ -55,7 +61,6 @@
    </script>
 
     <!-- BEGIN PAGE LEVEL PLUGINS -->
-    <script src="{{asset('saas/src/assets/js/scrollspyNav.js')}}"></script>
     <script src="{{asset('saas/src/plugins/src/filepond/filepond.min.js')}}"></script>
     <script src="{{asset('saas/src/plugins/src/filepond/FilePondPluginFileValidateType.min.js')}}"></script>
     <script src="{{asset('saas/src/plugins/src/filepond/FilePondPluginImageExifOrientation.min.js')}}"></script>

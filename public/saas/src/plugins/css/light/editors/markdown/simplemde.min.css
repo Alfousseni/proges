@@ -433,8 +433,8 @@ span.CodeMirror-selectedtext {
 }
 
 .CodeMirror {
-  height: auto;
-  min-height: 300px;
+  height: 200px;
+  min-height: 20px;
   border: none;
   border-radius: 6px;
   padding: 10px;
@@ -445,7 +445,7 @@ span.CodeMirror-selectedtext {
 }
 
 .CodeMirror-scroll {
-  min-height: 300px;
+  min-height: 20px;
 }
 
 .CodeMirror-fullscreen {

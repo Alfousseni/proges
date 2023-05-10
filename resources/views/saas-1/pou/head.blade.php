@@ -6,6 +6,9 @@
     <link href="{{asset('saas/layouts/vertical-light-menu/css/light/loader.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('saas/layouts/vertical-light-menu/css/dark/loader.css')}}" rel="stylesheet" type="text/css" />
     <script src="{{asset('saas/layouts/vertical-light-menu/loader.js')}}"></script>
+    
+
+    
 
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
@@ -33,7 +36,8 @@
     <link href="{{asset('saas/src/assets/css/dark/scrollspyNav.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('saas/src/assets/css/dark/components/carousel.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('saas/src/assets/css/dark/components/modal.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{asset('saas/src/assets/css/dark/components/tabs.css')}}" rel="stylesheet" type="text/css">    
+    <link href="{{asset('saas/src/assets/css/dark/components/tabs.css')}}" rel="stylesheet" type="text/css"> 
+
     <!--  END CUSTOM STYLE FILE  -->
    
    
@@ -47,12 +51,6 @@
 
    
    
-     <link rel="stylesheet" type="text/css" href="{{asset('saas/src/plugins/css/light/editors/quill/quill.snow.css')}}">
-    <link href="{{asset('saas/src/assets/css/light/apps/mailbox.css')}}" rel="stylesheet" type="text/css" />
-    
-     <link rel="stylesheet" type="text/css" href="{{asset('saas/src/plugins/css/dark/editors/quill/quill.snow.css')}}">
-    <link href="{{asset('saas/src/assets/css/dark/apps/mailbox.css')}}" rel="stylesheet" type="text/css" />
-     
 
      <!-- BEGIN PAGE LEVEL STYLES -->
     <link rel="stylesheet" type="text/css" href="{{asset('saas/src/plugins/src/table/datatable/datatables.css')}}">
@@ -65,9 +63,10 @@
     
      <link rel="stylesheet" href="{{asset('saas/src/plugins/src/sweetalerts2/sweetalerts2.css')}}">
      <link href="{{asset('saas/src/plugins/css/light/sweetalerts2/custom-sweetalert.css')}}" rel="stylesheet" type="text/css" />
-     <link href="{{asset('saas/src/assets/css/dark/scrollspyNav.css')}}" rel="stylesheet" type="text/css" />
+   
      <link href="{{asset('saas/src/plugins/css/dark/sweetalerts2/custom-sweetalert.css')}}" rel="stylesheet" type="text/css" />
     
+
     
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
     <link href="{{asset('saas/src/plugins/src/apex/apexcharts.css')}}" rel="stylesheet" type="text/css">
@@ -79,9 +78,13 @@
 
     <link rel="stylesheet" href="{{asset('saas/src/plugins/src/filepond/filepond.min.css')}}">
     <link rel="stylesheet" href="{{asset('saas/src/plugins/src/filepond/FilePondPluginImagePreview.min.css')}}">
-
-    <link href="{{asset('saas/src/assets/css/light/scrollspyNav.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{asset('saas/src/plugins/css/light/filepond/custom-filepond.css')}}" rel="stylesheet" type="text/css" />
     
-    <link href="{{asset('saas/src/assets/css/dark/scrollspyNav.css')}}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{{asset('saas/src/plugins/css/dark/editors/markdown/simplemde.min.css')}}">
+
+   
+    <link href="{{asset('saas/src/plugins/css/light/filepond/custom-filepond.css')}}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{{asset('saas/src/plugins/css/light/editors/markdown/simplemde.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('saas/src/plugins/css/light/editors/quill/quill.snow.css')}}">
     <link href="{{asset('saas/src/plugins/css/dark/filepond/custom-filepond.css')}}" rel="stylesheet" type="text/css" />
+
+    

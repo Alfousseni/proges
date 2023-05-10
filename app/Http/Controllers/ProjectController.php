@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Project;
+use App\Models\Client;
+use App\Models\Task;
+use App\Models\User;
+
+
+
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -14,8 +20,9 @@ class ProjectController extends Controller
     {
         $user = Auth::user(); // Récupère l'utilisateur connecté
         $projects = Project::where('user_id', $user->id)->get(); // Récupère les projets de l'utilisateur connecté
+        $clients = Client::all();
 
-        return view('saas-1.gest_projet.index', compact('projects'));
+        return view('saas-1.gest_projet.index', compact('projects','clients'));
 
         //return view('projects.index', ['projects' => $projects]);
     }
@@ -40,6 +47,14 @@ class ProjectController extends Controller
         $project->description = $request->description;
         $project->start_date = $request->start_date;
         $project->end_date = $request->end_date;
+        $project->type = $request->type;
+        $project->client_id = $request->client;
+        $project->etat = $request->etat;
+        $project->budget = $request->budget;
+        $project->nbr_de_participant = $request->personne;
+
+
+
         $project->user_id = $user;
 
         $project->save();
@@ -52,7 +67,11 @@ class ProjectController extends Controller
         if (isset($id)) {
             $id = $id;
             $project = Project::all()->where('id', $id)->first();
-            return view('saas-1.gest_projet.fiche', compact('project'));
+            $tasks = Task::all()->where('project_id', $id);
+            $users = User::where('role', 'user')->get();
+
+
+            return view('saas-1.gest_projet.fiche', compact('project','tasks','users'));
         }
     }
     /**
@@ -90,7 +109,11 @@ class ProjectController extends Controller
         $project->start_date = $request->start_date;
         $project->end_date = $request->end_date;
         $user = Auth::user()->id; // Récupère l'utilisateur connecté
-        $project->user_id = $user;  
+        $project->user_id = $user;
+        $project->type = $request->type;
+        $project->etat = $request->etat;
+        $project->budget = $request->budget;
+        $project->nbr_de_participant = $request->personne;  
         $project->update();
         return BACK()->with('message', "Le projet a bien ete modifier !");
         

@@ -41,9 +41,10 @@
                                 <thead>
                                     <tr>
                                         <th class="text-center">Nom</th>
-                                        <th class="text-center">description</th>
-                                        <th class="text-center">date de lancement</th>
-                                        <th class="text-center">date de fin</th>
+                                        <th class="text-center">Budget</th>
+                                        <th class="text-center">Date de lancement</th>
+                                        <th class="text-center">Date de fin</th>
+                                        <th class="text-center">Etat</th>
                                         <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
@@ -52,9 +53,10 @@
                                         <tr>
 
                                             <td class="text-center">{{ $project->name }}</td>
-                                            <td class="text-center">{{ $project->description }}</td>
+                                            <td class="text-center">{{ $project->budget }}</td>
                                             <td class="text-center">{{ $project->start_date }}</td>
                                             <td class="text-center">{{ $project->end_date }}</td>
+                                            <td class="text-center">{{ $project->etat }}</td>
                                             <td align="center">
                                                 <a href="{{ route('voirprojet', $project->id) }}" title="Voir"
                                                     style="float:left;" class="badge badge-light-primary text-start me-2 ">
@@ -87,18 +89,22 @@
                                     @endforeach
                                 </tbody>
                             </table>
+
                         </div>
+                        
                     </div>
                 </div>
             </div>
 
 
             <!-- Modal -->
+        <script src="https://cdn.jsdelivr.net/npm/simplemde@1.11.2/dist/simplemde.min.js"></script>
 
-            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+
+            <div class="modal fade bd-example-modal-lg py-2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
+                    <div class="modal-content py-5">
                         <div class="modal-header bg-light">
                             <h4 class="modal-title" id="myCenterModalLabel">Formulaire d'ajout d'un projet</h4>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -122,32 +128,98 @@
                                             </div>
                                     
                                         </div>
-                                        <div class="row">
+                                       <div class="row">
                                             <div class="col-md-4">
-                                                <label for="validationCustom01" class="form-label">Description du projet</label>
-                                                <textarea type="text" name="description" class="form-control"
+                                                <label for="validationCustom01" class="form-label">Client</label>
+                                                <select type="text" name="client" class="form-control"
                                                     id="validationCustom01" placeholder="Saisir la description du projet"
-                                                    required></textarea>
+                                                    required>
+                                                        @foreach($clients as $client)
+                                                        <option value="" >Choisir le client</option>                                                     
+                                                        <option value="{{$client->id}}">{{$client->nom}} {{$client->prenom}} </option>
+                                                        @endforeach
+                                                </select>
                                                 <div class="valid-feedback">Looks good!</div>
                                             </div>
                                             <div class="col-md-4">
+                                                <label for="validationCustom01" class="form-label">Type de projet</label>
+                                                <select type="text" name="type" class="form-control"
+                                                    id="validationCustom01" placeholder="Saisir la description du projet"
+                                                    required>
+                                                        <option value="ineterne">Interne</option>                                                     
+                                                        <option value="externe">Externe</option>
+                                                </select>
+                                                <div class="valid-feedback">Looks good!</div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="validationCustom01" class="form-label">Nombre de participant</label>
+                                                <input type="number" name="personne" class="form-control"
+                                                    id="validationCustom01" 
+                                                    required>
+                                                <div class="valid-feedback">Looks good!</div>
+                                            </div> 
+                                       </div>
+                                       <div class="row ">
+                                            <div class="col-md-6">
+                                                <label for="validationCustom01" class="form-label">Budget</label>
+                                                <input type="number" name="budget" class="form-control"
+                                                    id="validationCustom01" 
+                                                    required>
+                                                <div class="valid-feedback">Looks good!</div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="validationCustom01" class="form-label">Etat</label>
+                                                <select type="text" name="etat" class="form-control"
+                                                    id="validationCustom01" placeholder="Saisir la description du projet"
+                                                    required>
+                                                        <option value="">Etat du projet</option>                                                     
+                                                        <option value="en attente">En attente</option>                                                     
+                                                        <option value="en cours">En cours</option>
+                                                        <option value="fin">Fin</option>
+
+                                                </select>
+                                                <div class="valid-feedback">Looks good!</div>
+                                            </div>
+                                       </div>
+                                       <div class="row">
+                                        
+                                    </div>
+                                        <div class="row">
+                                            
+                                            <div class="col-md-6">
                                                 <label for="validationCustom01" class="form-label">date de lancement</label>
                                                 <input type="date" name="start_date" class="form-control"
                                                     id="validationCustom01" 
                                                     required>
                                                 <div class="valid-feedback">Looks good!</div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
                                                 <label for="validationCustom01" class="form-label">date de fin</label>
                                                 <input type="date" name="end_date" class="form-control"
                                                     id="validationCustom01" 
                                                     required>
                                                 <div class="valid-feedback">Looks good!</div>
                                             </div>
-                                        <div class="modal-footer">
-                                            <button class="btn btn-primary">Valider</button>
+                                            
+                                            <div class="col-md-12">
+                                           
+                                                <label for="validationCustom01" class="form-label">DESCRIPTION DU PROJET</label>
+                                               
+                                                    <textarea name="description" id="demo2" cols="100%"  rows="6"></textarea>
+                                                
+                                                <div class="valid-feedback">Looks good!</div>
+                                           
+                                            </div>
+                                        <div class=" ">
+                                            <button type="submit" class="btn btn-primary">Valider</button>
                                             <button type="reset" class="btn btn-default">Annuler</button>
                                         </div>
+                                        </div>
+
+                                   
+                                    <div class="row">
+                                            
+                                    </div>
                                     </form>
                                 </div>
                             </div>
@@ -155,7 +227,9 @@
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
             </div><!-- /.modal -->
+          
         @endsection
+
         <script>
             selectBox = new vanillaSelectBox("#selectPays", {
                 "keepInlineStyles": true,
@@ -165,3 +239,4 @@
                 "placeHolder": "Choose..."
             });
         </script>
+       

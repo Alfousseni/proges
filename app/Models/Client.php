@@ -7,8 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Client extends Model
 {
+    protected $guarded=[];
+
     public function Societe()
     {
         return $this->belongsTo(Societe::class) ;
+    }
+
+    public function project()
+    {
+        return $this->hasMany(Project::class) ;
     }
 }
