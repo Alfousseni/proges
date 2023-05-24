@@ -6,6 +6,10 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\Task_assignmentController;
+use App\Http\Controllers\Task_delController;
+
+
 
 
 
@@ -68,6 +72,14 @@ Route::middleware('auth','role:admin')->group(function () {
 	Route::get('/app/voir-list-tache',[TaskController::class, 'voirliste1'])->name('voirlistet');
 	Route::get('/app/list-tache',[TaskController::class, 'liste1'])->name('liste-tache');
 	//fin
+
+	//task_assignment
+	Route::post('/app/assignment/{id}',[Task_assignmentController::class, 'store'])->name('assignmentadd');
+	
+
+	//task_assignment
+	Route::post('/app/delassignment/{id}',[Task_delController::class, 'store'])->name('assignmentdeladd');
+
 
 	
 

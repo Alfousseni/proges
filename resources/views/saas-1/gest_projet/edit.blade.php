@@ -72,7 +72,7 @@
                                             <div class="col-md-4">
                                                 <label for="validationCustom01" class="form-label">Etat</label>
                                                 <select type="text" name="etat" class="form-control" id="validationCustom01" required>
-													<option value="">Etat du projet</option>
+													<option value="Null">Etat du projet</option>
 													<option value="en attente" {{ $project->etat == 'en attente' ? 'selected' : '' }}>En attente</option>
 													<option value="en cours" {{ $project->etat == 'en cours' ? 'selected' : '' }}>En cours</option>
 													<option value="fin" {{ $project->etat == 'fin' ? 'selected' : '' }}>Fin</option>
@@ -81,6 +81,17 @@
                                                 <div class="valid-feedback">Looks good!</div>
                                             </div>
                                        </div>
+                                       <div class="col-md-4">
+                                        <label for="validationCustom01" class="form-label">Priorite</label>
+                                        <select type="text" name="Initialiser" class="form-control" id="validationCustom01" required>
+                                            <option value="Null">Prioriter du projet</option>
+                                            <option value="haute" {{ $project->priorite == 'haute' ? 'selected' : '' }}>Haute</option>
+                                            <option value="moyenne" {{ $project->priorite == 'moyenne' ? 'selected' : '' }}>Moyenne</option>
+                                            <option value="fin" {{ $project->priorite == 'basse' ? 'selected' : '' }}>Basse</option>
+                                        </select>
+                                        
+                                        <div class="valid-feedback">Looks good!</div>
+                                    </div>
               						</div>
               						<div class="row">
                 						<div class="col-md-4">
@@ -106,7 +117,7 @@
 									  <div class="col-md-4 w-100 border">
 										<label for="validationCustom01" class="form-label">DESCRIPTION DU PROJET</label>
 										<input type="text" name="description" 
-											id="demo2" 
+											id="demo1" 
 											value="{{$project->description}}" required>
 										<div class="valid-feedback">Looks good!</div>
 									</div >			     

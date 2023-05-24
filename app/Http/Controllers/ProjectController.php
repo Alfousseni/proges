@@ -49,7 +49,8 @@ class ProjectController extends Controller
         $project->end_date = $request->end_date;
         $project->type = $request->type;
         $project->client_id = $request->client;
-        $project->etat = $request->etat;
+        $project->etat = "Initialiser";
+        $project->priorite = $request->priorite;
         $project->budget = $request->budget;
         $project->nbr_de_participant = $request->personne;
 
@@ -112,6 +113,7 @@ class ProjectController extends Controller
         $project->user_id = $user;
         $project->type = $request->type;
         $project->etat = $request->etat;
+        $project->priorite = $request->priorite;
         $project->budget = $request->budget;
         $project->nbr_de_participant = $request->personne;  
         $project->update();
@@ -129,7 +131,6 @@ class ProjectController extends Controller
         $erreur = '';
          
             $message = "Projet supprimé avec succèss";
-            $desc = str_replace('@', '', "@DELETE-FORMATION");
             $project->delete();
         
         if ($message != '') {

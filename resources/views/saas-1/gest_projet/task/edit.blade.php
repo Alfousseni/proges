@@ -50,7 +50,7 @@
                   							<input type="date" 
                           							name="start_date"  
                           							class="form-control" 
-                          							id="validationCustom01" 
+                          							id="validationCustom01"  min="{{$project->start_date}}" max="{{$project->end_date}}"
                           							value="{{$task->start_date}}" required>
                   							
                 						</div>
@@ -59,7 +59,7 @@
                     						<input type="date"  
                             						name="end_date"  
                             						class="form-control" 
-                            						id="validationCustom01" 
+                            						id="validationCustom01" min="{{$project->start_date}}" max="{{$project->end_date}}"
                             						value="{{$task->end_date}}"  required>
                   							
                 						</div>
@@ -79,7 +79,7 @@
 									  <div class="col-md-4 w-100 border">
 										<label for="validationCustom01" class="form-label">DESCRIPTION DE LA TACHE</label>
 										<input type="text" name="description" 
-											id="demo2" 
+											id="demo1" 
 											value="{{$task->description}}" required>
 										<div class="valid-feedback">Looks good!</div>
 									</div >			     

@@ -14,10 +14,10 @@
 
 			<div class="row layout-top-spacing">
 
-				<div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
-					<div class="widget widget-six">
+				<div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing ">
+					<div style="height: 200px" class="widget widget-six">
 						
-						<div style=" font-size: 3em;">{{$project->name}}</div>
+						<div style=" font-size: 1.9em;">{{$project->name}}</div>
 						<div class="w-info">
 							<p class="value">{{$project->client->nom}} {{$project->client->prenom}}</p>
 						</div>
@@ -26,7 +26,7 @@
 				</div>
 				
 				<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
-					<div class="widget widget-card-four">
+					<div style="height: 200px" class="widget widget-card-four">
 						<div class="widget-content">
 							<div class="w-header">
 								<div class="w-info">
@@ -36,7 +36,7 @@
 							
 						</div>
 						<div class="w-content">
-							<div class="w-info">
+							<div style="height: 200px" class="w-info">
 								<p class="value">CFA  {{$project->budget}} <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trending-up"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg></p>
 							</div>
 						</div>
@@ -44,17 +44,17 @@
 				</div>  
 
 				<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
-					<div class="widget widget-card-three">
+					<div class="widget widget-card-three " style="height: 200px">
 						<div class="widget-content  d-flex">
 							<div class="account-box">
-								<div class="info">
-									<div class="inv-title">
+								<div class="">
+									<div class="">
 										<h5 class="">Delaie</h5>
 									</div>
 								</div>
-								<div class="w-info">
-									<p class="value"> Debut : {{$project->start_date}}</p><br>
-									<p class="value"> Livraison : {{$project->end_date}}</p><br>
+								<div class="">
+									<p class=""> Debut : {{$project->start_date}}</p><br>
+									<p class=""> Livraison : {{$project->end_date}}</p><br>
 
 								</div>
 							</div>
@@ -64,14 +64,14 @@
 				</div>
 
 				<div class="col-xl-9 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
-					<div class="widget widget-chart-three">
+					<div class="widget widget-chart-three" >
 						<div class="widget-heading">
 							<div class="">
 								<h5 class="">DESCRIPTION DU PROJET</h5>
 							</div>
 						</div>
 
-						<div class="widget-content">
+						<div class="widget-content" style="min-height: 400px">
 							
 								<p class="p-3">{{$project->description}}</p>
 							
@@ -104,9 +104,11 @@
 												<div class="t-content">
 													<div class="t-uppercontent">
 														<h5>{{ $task->name }} :  
-															<a href="javscript:void(0);"><span>[{{ isset($task_assignment->user) && isset($task_assignment->user->name) ? $task_assignment->user->name : '' }}]</span></a></h5>
+															<a href="javscript:void(0);"><span>{{ isset($task_assignment->user) && isset($task_assignment->user->name) ? $task_assignment->user->name : '' }}</span></a>
+														</h5>
 													</div>
-													<p>07 May, 2022</p>
+													<div class="t-uppercontent"><h5 class="card-title mb-2" ><li style="color: {{($task->completed) ? 'green' : 'red'}}">{{($task->completed) ? 'Terminé' : 'Inachevé'}}</li></h5></div>
+													<p>{{ $task->end_date }}</p>
 												</div>
 											</div>
 										@endforeach
@@ -121,15 +123,6 @@
 						
 					</div>
 				</div>
-
-				
-
-				
-
-				
-
-				
-
 			
 
 			</div>
@@ -175,7 +168,6 @@
 									<thead>
 										<tr>
 											<th class="text-center">Nom</th>
-											<th class="text-center">Description</th>
 											<th class="text-center">Debut de la tache</th>
 											<th class="text-center">Fin de tache</th>
 											<th class="text-center">Etat</th>
@@ -187,7 +179,6 @@
 										@foreach ($tasks as $task)
 										<tr>
 											<td class="text-center">{{ isset($task->name) ? $task->name : '' }}</td>
-											<td class="text-center">{{ isset($task->description) ? $task->description : '' }}</td>
 											<td class="text-center">{{ isset($task->start_date) ? $task->start_date : '' }}</td>
 											<td class="text-center">{{ isset($task->end_date) ? $task->end_date : '' }}</td>
 											<td class="text-center">{{ isset($task->completed) ? $task->completed : '' }}</td>
@@ -292,7 +283,7 @@
                                            
 													<label for="validationCustom01" class="form-label">DESCRIPTION DU PROJET</label>
 												   
-														<textarea name="description" id="demo2" cols="100%"  rows="6"></textarea>
+														<textarea name="description" id="demo1" cols="100%"  rows="6"></textarea>
 													
 													<div class="valid-feedback">Looks good!</div>
 											   

@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Task_assignment extends Model
+class task_del extends Model
 {
     use HasFactory;
     protected $guarded=[];
+
 
     public function task()
     {
@@ -19,9 +20,4 @@ class Task_assignment extends Model
     {
         return $this->belongsTo(User::class,'participant_id');
     }
-
-    
-
-    
-
 }

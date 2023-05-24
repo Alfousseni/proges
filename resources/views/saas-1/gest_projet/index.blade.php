@@ -2,7 +2,7 @@
 @section('contenu')
     <div class="row">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header ">
                 <h5>Liste des Projets
                     <a href="" title="Voir toutes les clients"
                         style="text-align:right; float:right; margin-bottom:20px;" class="btn btn-primary mb-2 me-2"><i
@@ -17,8 +17,8 @@
                     structure.
                 </p>
             </div>
-            <div class="row">
-                <div class="col-md-12">
+            <div class="row ">
+                <div class="col-md-12 ">
                     @if (session()->has('message'))
                         <div class="alert alert-icon alert-success">
                             <em class="icon ni ni-alert-circle"></em>
@@ -119,7 +119,7 @@
                                             <p class="panel-subtitle">
                                                 Veuillez renseigner les champs ci-dessous.
                                             </p>
-                                            <div class="col-md-6">
+                                            <div class="col-md-12">
                                                 <label for="validationCustom01" class="form-label">Nom du projet</label>
                                                 <input type="text" name="nom" class="form-control"
                                                     id="validationCustom01" placeholder="Saisir l'intituler du projet"
@@ -168,14 +168,14 @@
                                                 <div class="valid-feedback">Looks good!</div>
                                             </div>
                                             <div class="col-md-6">
-                                                <label for="validationCustom01" class="form-label">Etat</label>
-                                                <select type="text" name="etat" class="form-control"
+                                                <label for="validationCustom01" class="form-label">Priorite</label>
+                                                <select type="text" name="priorite" class="form-control"
                                                     id="validationCustom01" placeholder="Saisir la description du projet"
                                                     required>
-                                                        <option value="">Etat du projet</option>                                                     
-                                                        <option value="en attente">En attente</option>                                                     
-                                                        <option value="en cours">En cours</option>
-                                                        <option value="fin">Fin</option>
+                                                        <option value="">Priorite du projet</option>                                                     
+                                                        <option value="haute">Haute</option>                                                     
+                                                        <option value="moyenne">Moyenne</option>
+                                                        <option value="basse">Basse</option>
 
                                                 </select>
                                                 <div class="valid-feedback">Looks good!</div>
@@ -205,15 +205,15 @@
                                            
                                                 <label for="validationCustom01" class="form-label">DESCRIPTION DU PROJET</label>
                                                
-                                                    <textarea name="description" id="demo2" cols="100%"  rows="6"></textarea>
+                                                    <textarea name="description" id="demo1" cols="100%"  rows="6"></textarea>
                                                 
                                                 <div class="valid-feedback">Looks good!</div>
                                            
                                             </div>
-                                        <div class=" ">
-                                            <button type="submit" class="btn btn-primary">Valider</button>
-                                            <button type="reset" class="btn btn-default">Annuler</button>
-                                        </div>
+                                            <div class=" ">
+                                                <button type="submit" class="btn btn-primary">Valider</button>
+                                                <button type="reset" class="btn btn-default">Annuler</button>
+                                            </div>
                                         </div>
 
                                    

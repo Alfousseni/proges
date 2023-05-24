@@ -1,34 +1,155 @@
 @extends('saas-1.index')
 @section('contenu')
+<div class="row">
+	{{-- <div class="col-md-12">
+		<a href="/app/client" title="retour a la page precedente"  style="float:right;" 
+		class="btn btn-danger btn-icon mb-2 me-1 btn-rounded">
+            <i data-feather="arrow-left"></i>
+		</a>
+	</div> --}}
 
-<div class="card style-5 bg-primary mb-md-0 mb-4 w-50 ">
-    <div class="card-top-content">
-        <div class="avatar avatar-md">
-			<i class="fas fa-user rounded-circle"></i>
-		</div>		
-    </div>
-    <div class="card-content">
-        <div class="card-body">
-            {{-- <h5 class="card-title mb-2">{{$task->name}}  {{($task->completed) ? 'Terminer' : 'Inachever'}}</h5> --}}
-			<h5 class="card-title mb-2" >{{$task->name}}  <li style="color: {{($task->completed) ? 'green' : 'red'}}">{{($task->completed) ? 'Terminé' : 'Inachevé'}}</li></h5>
-        </div>
-    </div>
-</div>
-<div class="col-xl-9 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing mx-auto">
-    <div class="widget widget-chart-three">
-        <div class="widget-heading">
-            <div class="">
-                <h5 class="">DESCRIPTION DU PROJET</h5>
-            </div>
-        </div>
+	<div class="layout-px-spacing">
 
-        <div class="widget-content">
-            
-                <p class="p-3">{{$task->description}}</p>
-            
-        </div>
-    </div>
-</div
+		<div class="middle-content container-xxl p-0">
+
+			<div class="row layout-top-spacing">
+
+				<div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing ">
+					<div style="height: 200px" class="widget widget-six">
+						<div class="w-info">
+                            <h6 class="value">Tache</h6>
+                        </div>
+						<div style=" font-size: 1.9em;">{{isset($task) ? $task->name : ""}}</div>
+
+					</div>
+					
+				</div>
+				
+				<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
+					<div style="height: 200px" class="widget widget-card-four">
+						<div class="widget-content">
+							<div class="w-header">
+								<div class="w-info">
+									<h6 class="value">Etat</h6>
+								</div>
+							</div>
+							
+						</div>
+						<div class="w-content">
+							<div style="height: 200px" class="w-info">
+								<h2><p class=""><li style="color: {{($task->completed) ? 'green' : 'red'}}">{{($task->completed) ? 'Terminé' : 'Inachevé'}}</li></p></h2>
+							</div>
+						</div>
+					</div>
+				</div>  
+
+				<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
+					<div class="widget widget-card-three " style="height: 200px">
+						<div class="widget-content  d-flex">
+							<div class="account-box">
+								<div class="">
+									<div class="">
+										<h5 class="">Delaie</h5>
+									</div>
+								</div>
+								<div class="">
+									<p class=""> Debut : {{$task->start_date}} </p><br>
+									<p class=""> Livraison : {{$task->end_date}} </p><br>
+
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+                <div class="col-md-12">
+                    @if (session()->has('message'))
+                        <div class="alert alert-icon alert-success">
+                            <em class="icon ni ni-alert-circle"></em>
+                            {{ session('message') }}
+                        </div>
+                    @endif
+                    @if ($errors->any())
+                        @foreach ($errors->all() as $error)
+                            <div class="alert alert-icon alert-danger">
+                                <em class="icon ni ni-alert-circle"></em>
+                                {{ $error }}
+                            </div>
+                        @endforeach
+                    @endif
+                </div>
+
+				<div class="col-xl-9 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+					<div class="widget widget-chart-three" >
+						<div class="widget-heading">
+							<div class="">
+								<h5 class="">DESCRIPTION DE LA TACHE</h5>
+							</div>
+						</div>
+
+						<div class="widget-content" style="min-height: 400px">
+							
+								<p class="p-3">{{$task->description}}</p>
+							
+						</div>
+					</div>
+				</div>
+
+				<div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
+					<div class="widget widget-activity-five">
+                        <h4><b>Charges de tache</b></h4>
+						<div class="widget-heading">
+                            <a href="" title="ajouter un charger de taches"
+                                 style="float:left;" class="badge badge-light-primary text-start me-2 add"
+                                data-bs-toggle="modal" data-bs-target="#loginModal" id="lo" > Ajouter 
+                                <i data-feather="user"></i>
+                            </a>
+                            <a href="" title="ajouter un charger de taches"
+                                 style="float:left;" class="badge badge-light-primary text-start me-2 sup"
+                                data-bs-toggle="modal" data-bs-target="#standardModal" id="sup" > Retirer 
+                                <i data-feather="user"></i>
+                            </a>
+						</div>
+						<div class="widget-content">
+							<div class=""></div>
+							<div class="mt-container mx-auto">
+                                
+								<div class="timeline-line">
+														 
+
+                                    @foreach ($task->task_assignments as $task_assignment)
+                                    <div class="item-timeline timeline-new">
+												<div class="t-dot">
+													<div class="t-secondary"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></div>
+												</div>
+												<div class="t-content">
+													<div class="t-uppercontent">
+														<h5>{{ isset($task_assignment->user) && isset($task_assignment->user->name) ? $task_assignment->user->name : '' }}  
+														</h5>
+													</div>
+													
+                                               </div>
+												
+									</div>
+										@endforeach
+									
+									                            
+								</div>                                    
+							</div>
+
+							<div class="w-shadow-bottom">
+                                
+                            </div>
+						</div>
+						
+						
+					</div>
+				</div>
+			
+
+			</div>
+				
+		</div>
 {{-- @foreach ($task->task_assignments as $task_assignment) --}}
 @foreach ($comments as $comment)
 
@@ -39,113 +160,153 @@
                 <div role="menu" class="collapsed" data-bs-toggle="collapse" data-bs-target="#defaultAccordionOne" aria-expanded="true" aria-controls="accordionun par défaut">
 					 Cliquer ici pour voir le Commentaire de  
 					 {{-- {{ isset($task_assignment->user) && isset($task_assignment->user->name) ? $task_assignment->user->name : '' }}<br> --}}
-					 {{ isset($comment) && isset($comment->user->name) ? $comment->user->name : '' }}<br>
+					 {{ isset($comment) && isset($comment->user->name) ? $comment->user->name : '' }} le <p>{{ $comment->created_at }}</p><br>
                 </div>
             </section>
         </div>
         <div id="defaultAccordionOne" class="collapse" aria-labelledby="..." data-bs-parent="#toggleAccordion">
             <div class="card-body">
 					 {{ isset($comment) && isset($comment->contenu) ? $comment->contenu : '' }}<br>
+                     
             </div>
         </div>
     </div>
-	@endforeach
-    
+	
+</div>
+@endforeach
 
-    {{-- <div class="card">
-        <div class="card-header" id="...">
-            <section class="mb-0 mt-0">
-                <div role="menu" class="" data-bs-toggle="collapse" data-bs-target="#defaultAccordionTwo" aria-expanded="false" aria-controls="defaultAccordionTwo">
-                    Élément de groupe pliable #2
-                </div>
-            </section>
-        </div>
-        <div id="defaultAccordionTwo" class="collapse show" aria-labelledby="..." data-bs-parent="#toggleAccordion">
-            <div class="card-body">
-                .......................
-                .......................
-            </div>
-        </div>
-    </div>
+@foreach ($task_dels as $task_del)
 
+<div id="toggleAccordion" class="no-icons accordion">
     <div class="card">
         <div class="card-header" id="...">
             <section class="mb-0 mt-0">
-                <div role="menu" class="collapsed" data-bs-toggle="collapse" data-bs-target="#defaultAccordionThree" aria-expanded="false" aria-controls="defaultAccordionThree">
-                    Élément de groupe pliable #3
+                <div role="menu" class="collapsed" data-bs-toggle="collapse" data-bs-target="#defaultAccordionOne" aria-expanded="true" aria-controls="accordionun par défaut">
+					 Cliquer ici pour voir la raison pour lesquel   
+					 {{-- {{ isset($task_assignment->user) && isset($task_assignment->user->name) ? $task_assignment->user->name : '' }}<br> --}}
+					 {{ isset($task_del) && isset($task_del->user->name) ? $task_del->user->name : '' }} a été retirer de cette tache le <p>{{ $task_del->created_at }}</p><br>
                 </div>
             </section>
         </div>
-        <div id="defaultAccordionThree" class="collapse" aria-labelledby="..." data-bs-parent="#toggleAccordion">
+        <div id="defaultAccordionOne" class="collapse" aria-labelledby="..." data-bs-parent="#toggleAccordion">
             <div class="card-body">
-                .......................
-                .......................
+					 {{ isset($task_del) && isset($task_del->raison) ? $task_del->raison : '' }}<br>
+                     
             </div>
         </div>
     </div>
-</div> --}}
+	
+</div>
+@endforeach
+
+<div class="modal fade login-modal" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+
+        <div class="modal-header" id="loginModalLabel">
+          <h4 class="modal-title">Ajout</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+        </div>
+        <div class="modal-body">
+          <form class="mt-0" method="post" action="{{route('assignmentadd',$task->id)}}">
+            @csrf
+            <div class="form-group">
+                <select type="text" name="user" class="form-control"
+                id="validationCustom01" placeholder="Saisir la description du projet"
+                required>
+                    @foreach($users as $user)                                                     
+                    <option value="{{$user->id}}">{{$user->name}} </option>
+                    @endforeach
+            </select>
+            <input type="hidden" name="task" value="{{$task->id}}">
+
+            </div>
+            
+            <button type="submit" class="btn btn-primary mt-2 mb-2 w-100">Ajouter</button>
+          </form>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <div class="forgot login-footer">
+              <span>Selectionner celui que vous souhaiter ajouter </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
-{{-- <div class="table-responsive col-xl-6">
-    18 May	784	In Progress
+  <div class="modal fade modal-notification" id="standardModal" tabindex="-1" role="dialog" aria-labelledby="standardModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Date</th>
-                <th class="text-center" scope="col">Sales</th>
-                <th class="text-center" scope="col">Status</th>
-            </tr>
-            <tr aria-hidden="true" class="mt-3 d-block table-row-hidden"></tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Shaun Park</td>
-                <td>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                    <span class="table-inner-text">25 Apr</span>
-                </td>
-                <td class="text-center">320</td>
-                <td class="text-center">
-                    <span class="badge badge-light-success">Approved</span>
-                </td>
-            </tr>
-            <tr>
-                <td>Alma Clarke</td>
-                <td>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                    <span class="table-inner-text">26 Apr</span>
-                </td>
-                <td class="text-center">110</td>
-                <td class="text-center">
-                    <span class="badge badge-light-secondary">Pending</span>
-                </td>
-            </tr>
-            <tr>
-                <td>Vincent Carpenter</td>
-                <td>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                    <span class="table-inner-text">05 May</span>
-                </td>
-                <td class="text-center">210</td>
-                <td class="text-center">
-                    <span class="badge badge-light-danger">Rejected</span>
-                </td>
-            </tr>
-            <tr>
-                <td>Xavier</td>
-                <td>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                    <span class="table-inner-text">18 May</span>
-                </td>
-                <td class="text-center">784</td>
-                <td class="text-center">
-                    <span class="badge badge-light-info">In Progress</span>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div> --}}
+        <div class="modal-header" id="loginModalLabel">
+          <h4 class="modal-title">Retirer</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+        </div>
+        <div class="modal-body">
+          <form class="mt-0" method="post" action="{{route('assignmentdeladd',$task->id)}}">
+            @csrf
+            <div class="form-group">
+                <select type="text" name="user" class="form-control"
+                id="validationCustom01" placeholder="S"
+                required>
+                @foreach ($task->task_assignments as $task_assignment)
+                <option value="{{$task_assignment->user->id}}">{{ isset($task_assignment->user) && isset($task_assignment->user->name) ? $task_assignment->user->name : '' }}  </option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                                           
+                    <label for="validationCustom01" class="form-label">Motif du retrait</label>
+                   
+                        <textarea name="raison" id="demo1" cols="100%"  rows="6" ></textarea>
+                    
+                    <div class="valid-feedback">Looks good!</div>
+               
+                </div>
+
+            </div>
+            
+            <button type="submit" class="btn btn-primary mt-2 mb-2 w-100">Retirer</button>
+          </form>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <div class="forgot login-footer">
+              <span>Selectionner celui que vous souhaiter retirer </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Votre code JavaScript -->
+  <script>
+    $(document).ready(function(){
+
+$(document).on('click', '.add', function(){
+
+ $('#loginModal').modal('show');//load modal
+
+
+
+});
+
+$(document).on('click', '.sup', function(){
+
+
+$('#standardModal').modal('show');//load modal
+
+
+});
+
+});
+</script>
+
+
 
 @endsection

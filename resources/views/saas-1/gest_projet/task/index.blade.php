@@ -40,7 +40,6 @@
                                 <thead>
                                     <tr>
                                         <th class="text-center">Nom</th>
-                                        <th class="text-center">Description</th>
                                         <th class="text-center">Debut de la tache</th>
                                         <th class="text-center">Fin de tache</th>
                                         <th class="text-center">Etat</th>
@@ -49,10 +48,10 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                   
                                     @foreach ($tasks as $task)
                                     <tr>
-                                        <td class="text-center">{{ isset($task->name) ? $task->name : '' }}</td>
-                                        <td class="text-center">{{ isset($task->description) ? $task->description : '' }}</td>
+                                        <td id="namee" class="text-center">{{ isset($task->name) ? $task->name : '' }}</td>
                                         <td class="text-center">{{ isset($task->start_date) ? $task->start_date : '' }}</td>
                                         <td class="text-center">{{ isset($task->end_date) ? $task->end_date : '' }}</td>
                                         <td class="text-center">{{ isset($task->completed) ? $task->completed : '' }}</td>
@@ -71,13 +70,14 @@
                                                     style="float:left;" class="badge badge-light-primary text-start me-2 ">
                                                     <i data-feather="edit"></i>
                                                 </a>
+                                               
                                                 <form id="destroy{{ $task->id }}"
                                                     onSubmit="return confirm('Confirmez-vous votre suppression?')"
                                                     action="{{ route('task.destroy', $task->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button class="badge badge-light-danger text-start action-delete"
-                                                        style="float:left;"><i data-feather="trash"></i></button>
+                                                        style="float:left;" ><i data-feather="trash"></i></button>
                                                     <button class="badge badge-light-danger text-start action-delete"
                                                         style="float:left;" hidden><i data-feather="trash"></i></button>
                                                 </form>
@@ -115,7 +115,7 @@
                                             <p class="panel-subtitle">
                                                 Veuillez renseigner les champs ci-dessous.
                                             </p>
-                                            <div class="col-md-6">
+                                            <div class="col-md-12">
                                                 <label for="validationCustom01" class="form-label">Nom de la tache </label>
                                                 <input type="text" name="nom" class="form-control"
                                                     id="validationCustom01" placeholder="Saisir l'intituler du projet"
@@ -140,27 +140,30 @@
                                             <div class="col-md-4">
                                                 <label for="validationCustom01" class="form-label">date de lancement</label>
                                                 <input type="date" name="start_date" class="form-control"
-                                                    id="validationCustom01" 
+                                                    id="validationCustom01" min="{{$project->start_date}}" max="{{$project->end_date}}" 
                                                     required>
                                                 <div class="valid-feedback">Looks good!</div>
                                             </div>
                                             <div class="col-md-4">
                                                 <label for="validationCustom01" class="form-label">date de fin</label>
-                                                <input type="date" name="end_date" class="form-control"
+                                                <input type="date" name="end_date" class="form-control" min="{{$project->start_date}}" max="{{$project->end_date}}"
                                                     id="validationCustom01" 
                                                     required>
                                                 <div class="valid-feedback">Looks good!</div>
                                             </div>
-                                            <div class="col-md-4 w-100 ">
-                                                <label for="validationCustom01" class="form-label">DESCRIPTION DE LA TACHE</label>
-                                                <input type="text" name="description" 
-                                                    id="demo2" 
-                                                    required>
+                                            <div class="col-md-12">
+                                           
+                                                <label for="validationCustom01" class="form-label">DESCRIPTION DU PROJET</label>
+                                               
+                                                    <textarea name="description" id="demo1" cols="100%"  rows="6"></textarea>
+                                                
                                                 <div class="valid-feedback">Looks good!</div>
-                                            </div >
-                                        <div class="">
-                                            <button type="submit" class="btn btn-primary">Valider</button>
-                                            <button type="reset" class="btn btn-default">Annuler</button>
+                                           
+                                            </div>
+                                            <div class=" ">
+                                                <button type="submit" class="btn btn-primary">Valider</button>
+                                                <button type="reset" class="btn btn-default">Annuler</button>
+                                            </div>
                                         </div>
                                     </form>
                                 </div>
@@ -169,6 +172,14 @@
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
             </div><!-- /.modal -->
+
+
+
+
+
+            <!-- Modal new login  -->
+
+
         @endsection
         <script>
             selectBox = new vanillaSelectBox("#selectPays", {
